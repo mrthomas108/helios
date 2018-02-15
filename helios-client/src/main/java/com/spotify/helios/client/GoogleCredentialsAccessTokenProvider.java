@@ -80,14 +80,13 @@ class GoogleCredentialsAccessTokenProvider {
 
   @VisibleForTesting
   static AccessToken getAccessToken(final GoogleCredentials credentials,
-                                    final List<String> scopes) throws IOException {
+                                    final List<String> scopes) {
     if (credentials == null) {
       return null;
     }
 
     final GoogleCredentials newCredentials =
         scopes.isEmpty() ? credentials : credentials.createScoped(scopes);
-    newCredentials.refresh();
 
     return newCredentials.getAccessToken();
   }
